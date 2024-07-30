@@ -5,29 +5,30 @@
 
 .rating-card-container {
     display: flex;
-
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 .rating-card {
-    width: 5rem; 
-    padding: 2%;
-    border-radius: 2rem ;
+    width: 8.5rem; 
+    height: 8.5rem;
+    padding-top: 1%;
+    padding-left: 1%;
+    border-radius: 1rem ;
     box-shadow: 0px 10px 8px #999;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    margin: 2rem; 
+    align-items: flex-start;
+    margin: 1rem; 
     background-color: #edefee;
-    height: 5rem; 
 }
 
 .rating-card h3 {
-    font-size: .75rem; 
-    margin:0; 
+    font-size: 1rem; 
+    margin:0.5rem 0; 
 }
 .rating-card h4 {
-    font-size: .6rem; 
+    font-size: .65rem; 
     margin:0; 
 }
 

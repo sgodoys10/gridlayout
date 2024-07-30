@@ -1,46 +1,60 @@
+* {
+    box-sizing: border-box;
+}
+.main {
+    grid-area: main-container;
+    width: 100%;
+}
 .content-wrapper {
-    display: flex;
-    justify-content: flex-start;
-    width: 96%; 
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two equal columns */
+    gap: 1rem; /* Space between the columns */
     padding: 1.5%;
+    width: 100%;
     border-radius: 2rem;
-    margin: 1rem; 
+    margin: 1rem 0;
     background-color: #495E57;
-    height: 80%; 
+    height: auto; /* Adjust height based on content */
+    position: relative;
 }
 
 .content-container {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    grid-column: 1/2;
+    position: relative;
+    z-index: 1;
 }
 
-.main-title h1{
+.main-title h1 {
     color: #F4CE14;
 }
 
 .main-title h2 {
     margin-top: -1.5rem;
-    color: #edefee ;
+    color: #edefee;
 }
 
 .main-description p {
-    max-width: 25%;
+    max-width: 50%; /* Ensure it uses available space */
     color: #edefee;
 }
+
 .restaurant-food-pic {
     display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
+    justify-content: center;
+    align-items: center; /* Center image vertically if needed */
+    grid-column: 2/3;
 }
 
 .restaurant-food-pic img {
-    width: 15%;
-    height: 15%;
-    object-fit: cover;
+    max-width: 40%; /* Ensure image doesn’t exceed column width */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 16pt;
 }
 
-.btn{
+.btn {
     background-color: #F4CE14;
     cursor: pointer;
     border-radius: 16px;

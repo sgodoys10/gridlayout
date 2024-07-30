@@ -6,8 +6,8 @@
   width: 100%;
   height: 100vh;
   display: grid;
-  grid-template-columns: repeat (6, 1fr);
-  grid-template-rows: 1fr 3fr 2fr 2fr 2fr 1fr;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  grid-template-rows: 1fr 3fr 2fr 2fr 3fr 1fr;
   grid-template-areas:  ". header-container header-container header-container header-container ."
                         ". main-container main-container main-container main-container ."
                         ". this-weeks-specials this-weeks-specials this-weeks-specials this-weeks-specials ."
@@ -31,26 +31,47 @@
 }
 .about {
   grid-area: about;
-  background-color: red;
 }
 .footer-container {
   grid-area: footer-container;
   background-color: gray;
 }
 
-
-/*@media only screen and (min-width:768px){
+@media (max-width: 1024px) {
   .layout {
-    width: 100%;
-    height: 100vh;
-    display: grid;
-    grid-template-columns: repeat (4, 1fr);
-    grid-template-rows: 2fr 5fr 2fr 2fr 1fr;
-    grid-template-areas:  'header-container header-container header-container header-container'
-                          'main-container main-container main-container sidebar2-container'
-                          'sidebar1-container main-container main-container sidebar2-container'
-                          'sidebar1-container main-container main-container sidebar2-container'
-                          'footer-container footer-container footer-container footer-container';
+    grid-template-columns: repeat(4, minmax(0, 1fr)); /* Remove the empty columns */
+    grid-template-areas:  
+      "header-container header-container header-container header-container"
+      "main-container main-container main-container main-container"
+      "this-weeks-specials this-weeks-specials this-weeks-specials this-weeks-specials"
+      "testimonials testimonials testimonials testimonials"
+      "about about about about"
+      "footer-container footer-container footer-container footer-container";
   }
 }
-  */
+
+@media (max-width: 768px) {
+  .layout {
+    grid-template-columns: repeat(2, minmax(0, 1fr)); /* Further adjust for smaller screens */
+    grid-template-areas:  
+      "header-container header-container"
+      "main-container main-container"
+      "this-weeks-specials this-weeks-specials"
+      "testimonials testimonials"
+      "about about"
+      "footer-container footer-container";
+  }
+}
+
+@media (max-width: 480px) {
+  .layout {
+    grid-template-columns: 1fr; /* Single column layout for very small screens */
+    grid-template-areas:  
+      "header-container"
+      "main-container"
+      "this-weeks-specials"
+      "testimonials"
+      "about"
+      "footer-container";
+  }
+}

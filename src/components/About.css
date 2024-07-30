@@ -1,0 +1,30 @@
+.about-wrapper {
+    grid-area: about;
+    width: 100%;
+}
+
+.about-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 1.5%;
+    width: 100%; 
+    border-radius: 2rem;
+    margin: 1rem 0; 
+    background-color: #F4CE14;
+    height: 90%; 
+}
+
+.about-title h1{
+    color: #495E57;
+}
+
+.about-title h2 {
+    margin-top: -1.5rem;
+    color: #333333 ;
+}
+
+.about-description {
+    max-width: 25%;
+    color: #edefee;
+}
