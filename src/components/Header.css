@@ -9,7 +9,7 @@ header {
     height: auto;
   }
 
-nav {
+.header-nav {
     display: flex;
     justify-content: end;
     align-items: center;
@@ -17,12 +17,12 @@ nav {
     margin-left: auto;
 }
 
-nav ul {
+.header-nav-list {
     display: flex;
     list-style: none;
 }
 
-nav ul li {
+.header-nav-item {
     margin-left: 10px;
 }
 

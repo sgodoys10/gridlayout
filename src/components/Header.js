@@ -6,14 +6,14 @@ const Header = () => {
   return (
     <header className="header">
       <img src={Logo} alt="Logo" className="header-logo"></img>
-      <nav>
-        <ul>
-          <li><a href='/#'>Home</a></li>
-          <li><a href='/#'>About</a></li>
-          <li><a href='/#'>Menu</a></li>
-          <li><a href='/#'>Reserve a table</a></li>
-          <li><a href='/#'>Order Online</a></li>
-          <li><a href='/#'>Log in</a></li>
+      <nav className='header-nav'>
+        <ul className='header-nav-list'>
+          <li className='header-nav-item'><a href='/#'>Home</a></li>
+          <li className='header-nav-item' ><a href='/#'>About</a></li>
+          <li className='header-nav-item'><a href='/#'>Menu</a></li>
+          <li className='header-nav-item'><a href='/#'>Reserve a table</a></li>
+          <li className='header-nav-item'><a href='/#'>Order Online</a></li>
+          <li className='header-nav-item'><a href='/#'>Log in</a></li>
         </ul>
       </nav>
     </header>

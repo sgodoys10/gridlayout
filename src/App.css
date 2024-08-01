@@ -34,7 +34,6 @@
 }
 .footer-container {
   grid-area: footer-container;
-  background-color: gray;
 }
 
 @media (max-width: 1024px) {
