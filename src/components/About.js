@@ -1,7 +1,6 @@
 import React from 'react';
 import "../App.css";
 import "./About.css";
-import restaurantChef from "../assets/restaurantChef.jpg"
 
 const About = () => {
   return (
