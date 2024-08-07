@@ -1,5 +1,5 @@
 import "./BookingPage.css"
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import React, {useReducer, useState} from 'react'
 import BookingForm from "./BookingForm"
 
@@ -9,7 +9,7 @@ const initializeTimesState = {
 };
 
 //reducer function to handle actions 
-const timesReducer = (state, action) => {
+export const timesReducer = (state, action) => {
   switch (action.type) {
     case 'SET_TIMES':
       return {times: action.payload}; 
@@ -30,6 +30,7 @@ const BookingPage = () => {
   });
 
   const [timesState, dispatch] = useReducer (timesReducer, initializeTimesState);
+  const navigate = useNavigate();
 
   const numberOfPeople = [
     "1", "2", "3", "4", "5", "6", "7", "8", "9", "10+"
@@ -71,6 +72,7 @@ const BookingPage = () => {
   const handleFormSubmit = (e) => {
     e.preventDefault();
     console.log('Form submitted:', formData);
+    navigate ('/confirmation', {state:{bookingDetails:formData}}); 
   };
 
 
