@@ -1,0 +1,35 @@
+.confirmation-container {
+    display: flex;
+    flex-direction: column;
+}
+.confirmation-container-title {
+    background-color: #495E57 ;
+    padding: 1rem;
+    text-align: center; /* Centers text horizontally */
+    margin-bottom: 1rem; /* Adjusts the space below the title */
+    color: white;
+  }
+
+  .confirmation-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Aligns items to the start (left) */
+}
+
+.confirmation-text {
+    margin-bottom: 2rem; /* Adds space between the paragraph and the list */
+}
+
+.confirmation-content-list {
+    list-style-type: none; /* Removes default list styling */
+    padding: 0; /* Removes default padding */
+    margin: 0; /* Removes default margin */
+}
+
+.confirmation-content-list li {
+    margin-bottom: .5rem; /* Adds space between list items */
+}
+
+.back-to-home-container {
+    margin-top: 2rem; /* Adds space above the button */
+}

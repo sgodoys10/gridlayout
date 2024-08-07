@@ -3,18 +3,18 @@ import { Link, useNavigate } from 'react-router-dom'
 import React, {useReducer, useState} from 'react'
 import BookingForm from "./BookingForm"
 
-//initial state for the available times 
+//initial state for the available times
 const initializeTimesState = {
   times:[],
 };
 
-//reducer function to handle actions 
+//reducer function to handle actions
 export const timesReducer = (state, action) => {
   switch (action.type) {
     case 'SET_TIMES':
-      return {times: action.payload}; 
+      return {times: action.payload};
       default:
-        return state; 
+        return state;
   }
 };
 
@@ -40,19 +40,19 @@ const BookingPage = () => {
     "Birthday", "Engagement", "Anniversary", "Other"
   ];
 
-//function to update available times based on  the selected date 
+//function to update available times based on  the selected date
   const updateAvailableTimes = (selectedDate) => {
     if (selectedDate) {
-      const date = new Date(selectedDate); 
-      const dayOfWeek = date.getDay(); 
+      const date = new Date(selectedDate);
+      const dayOfWeek = date.getDay();
 
-      //logic to set available times based on day of the week 
+      //logic to set available times based on day of the week
       const times = (dayOfWeek === 5 || dayOfWeek === 6)
       ? ["12:00", "13:00", "14:00", "15:00"]
       : ["17:00", "18:00", "19:00", "20:00", "21:00"];
 
-      //dispatch the action to update available times 
-      dispatch({type:'SET_TIMES', payload: times}); 
+      //dispatch the action to update available times
+      dispatch({type:'SET_TIMES', payload: times});
     }
   };
 
@@ -72,7 +72,7 @@ const BookingPage = () => {
   const handleFormSubmit = (e) => {
     e.preventDefault();
     console.log('Form submitted:', formData);
-    navigate ('/confirmation', {state:{bookingDetails:formData}}); 
+    navigate ('/confirmation', {state:{bookingDetails:formData}});
   };
 
 
@@ -82,7 +82,7 @@ const BookingPage = () => {
       <h1 className='booking-title'>Reserve a table</h1>
     </div>
     <div className='form-container'>
-      <BookingForm 
+      <BookingForm
         formData={formData}
         availableTimes={timesState.times}
         numberOfPeople={numberOfPeople}
