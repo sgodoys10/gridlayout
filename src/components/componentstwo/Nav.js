@@ -10,7 +10,7 @@ const Nav = () => {
           <Link to='/' className='header-nav-item'>Home</Link>
           <Link to='/' className='header-nav-item'>About</Link>
           <Link to='/' className='header-nav-item'>Menu</Link>
-          <Link to='/' className='header-nav-item'>Reserve a table</Link>
+          <Link to='/booking' className='header-nav-item'>Reserve a table</Link>
           <Link to='/' className='header-nav-item'>Order online</Link>
           <Link to='/' className='header-nav-item'>Log in</Link>
         </nav>

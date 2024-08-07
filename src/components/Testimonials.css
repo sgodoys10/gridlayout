@@ -23,6 +23,13 @@
     background-color: #edefee;
 }
 
+.rating-card-img{
+    width: 4.5rem;
+    height: auto;
+    border-radius: 8pt;
+}
+
+
 .rating-card h3 {
     font-size: 1rem; 
     margin:0.5rem 0; 

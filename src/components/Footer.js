@@ -1,6 +1,7 @@
 import React from 'react'
 import "./Footer.css"
 import restaurantChef from "../assets/restaurantChef.jpg"
+import FooterNav from  "./componentstwo/FooterNav"
 
 const Footer = () => {
   return (
@@ -8,19 +9,7 @@ const Footer = () => {
         <div className='footer-image'>
           <img src={restaurantChef} alt='Little Lemon Chef'/>
         </div>
-      <div className='footer-nav-wrapper'>
-      <h4>Navigation</h4>
-        <nav className='footer-nav'>
-          <ul className='footer-nav-list'>
-            <li className='footer-nav-item'><a href='/#'>Home</a></li>
-            <li className='footer-nav-item'><a href='/#'>About</a></li>
-            <li className='footer-nav-item'><a href='/#'>Menu</a></li>
-            <li className='footer-nav-item'><a href='/#'>Reserve a table</a></li>
-            <li className='footer-nav-item'><a href='/#'>Order Online</a></li>
-            <li className='footer-nav-item'><a href='/#'>Log in</a></li>
-          </ul>
-        </nav>
-      </div>
+          <FooterNav/>
           <div className='footer-contact'>
             <h4>Contact</h4>
             <div className='footer-contact-items'>

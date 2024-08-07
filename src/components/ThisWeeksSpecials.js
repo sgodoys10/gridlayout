@@ -1,5 +1,7 @@
 import React from 'react'
 import "./ThisWeeksSpecials.css"
+import greeksalad from "../assets/greeksalad.jpg"
+import lemondessert from "../assets/lemondessert.jpg"
 
 const ThisWeeksSpecials = () => {
   return (
@@ -12,12 +14,14 @@ const ThisWeeksSpecials = () => {
     </div>
       <div className='card-container'>
       <div className='card'>
+      <img src={greeksalad} alt='greek salad' className='this-weeks-specials-img'></img>
         <h3>Greek Salad</h3>
         <p className='price'> $15.99</p>
         <p>The famous greek salad of crispy lettuce, peppers, olives and our Chicago style feta cheese, garnished with crunchy garlic and rosemary croutons. 
         </p>
       </div>
       <div className='card'>
+      <img src={greeksalad} alt='greek salad' className='this-weeks-specials-img'></img>
         <h3>Bruschetta</h3>
         <p className='price'>$5.99</p>
         <p>
@@ -25,6 +29,7 @@ const ThisWeeksSpecials = () => {
         </p>
         </div>
       <div className='card'>
+      <img src={lemondessert} alt='lemon dessert' className='this-weeks-specials-img'></img>
         <h3>Lemon Dessert</h3>
         <p className='price'>$5.00</p>
         <p>
