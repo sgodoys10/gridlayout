@@ -1,11 +1,11 @@
 import "./BookingPage.css"
 import { Link, useNavigate } from 'react-router-dom'
-import React, {useReducer, useState} from 'react'
+import React, {useReducer, useState, useEffect} from 'react'
 import BookingForm from "./BookingForm"
 
 //initial state for the available times
 const initializeTimesState = {
-  times:[],
+  times: [],
 };
 
 //reducer function to handle actions
@@ -30,6 +30,7 @@ const BookingPage = () => {
   });
 
   const [timesState, dispatch] = useReducer (timesReducer, initializeTimesState);
+  const [bookings, setBookings] = useState([]);
   const navigate = useNavigate();
 
   const numberOfPeople = [
@@ -40,21 +41,62 @@ const BookingPage = () => {
     "Birthday", "Engagement", "Anniversary", "Other"
   ];
 
-//function to update available times based on  the selected date
-  const updateAvailableTimes = (selectedDate) => {
-    if (selectedDate) {
-      const date = new Date(selectedDate);
-      const dayOfWeek = date.getDay();
 
-      //logic to set available times based on day of the week
-      const times = (dayOfWeek === 5 || dayOfWeek === 6)
-      ? ["12:00", "13:00", "14:00", "15:00"]
-      : ["17:00", "18:00", "19:00", "20:00", "21:00"];
+ // Function to fetch available times based on the selected date
+ const fetchAvailableTimes = (selectedDate) => {
+  try {
+    // Directly call window.fetchAPI without async/await
+    const times = window.fetchAPI(new Date(selectedDate));
+    return times; // Return the times directly as an array
+  } catch (error) {
+    console.error('Error fetching available times:', error);
+    return [];
+  }
+};
 
-      //dispatch the action to update available times
-      dispatch({type:'SET_TIMES', payload: times});
-    }
+// Function to update available times based on the selected date
+const updateAvailableTimes = (selectedDate) => {
+  if (selectedDate) {
+    const times = fetchAvailableTimes(selectedDate);
+    dispatch({ type: 'SET_TIMES', payload: times });
+  }
+};
+
+// useEffect to fetch available times on initial load (for today's date)
+useEffect(() => {
+  const fetchInitialTimes = () => {
+    const today = new Date().toISOString().split('T')[0]; // Format the date as YYYY-MM-DD
+    const times = fetchAvailableTimes(today);
+    dispatch({ type: 'SET_TIMES', payload: times });
   };
+
+  fetchInitialTimes();
+
+  const existingBookings = JSON.parse(localStorage.getItem('bookings')) || [];
+  setBookings(existingBookings);
+  }, []);
+
+  // Function to submit the form data
+  const submitForm = (formData) => {
+    try {
+      const result = window.submitAPI(formData); // Call the global submitAPI function
+      if (result) { // If the submission is successful
+     // Get existing bookings from local storage
+     const existingBookings = JSON.parse(localStorage.getItem('bookings')) || [];
+
+     // Add new booking to the list
+     const updatedBookings = [...existingBookings, formData];
+
+     // Save the updated list to local storage
+     localStorage.setItem('bookings', JSON.stringify(updatedBookings));
+
+     // Navigate to confirmation page
+     navigate('/confirmation', { state: { bookingDetails: formData } });
+   }
+ } catch (error) {
+   console.error('Error submitting form:', error);
+ }
+};
 
   const handleFormChange = (e) => {
     const { name, value } = e.target;
@@ -63,18 +105,18 @@ const BookingPage = () => {
       [name]: value
     }));
 
-
     if (name === 'date') {
-    updateAvailableTimes(value);
-  }
-};
+      updateAvailableTimes(value); // Fetch and update available times when the date changes
+    }
+  };
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
     console.log('Form submitted:', formData);
-    navigate ('/confirmation', {state:{bookingDetails:formData}});
+    submitForm(formData); // Use submitForm function to handle form submission
   };
 
+  
 
   return (
     <>
