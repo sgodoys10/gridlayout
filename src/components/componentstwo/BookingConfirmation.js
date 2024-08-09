@@ -7,8 +7,12 @@ const BookingConfirmation = () => {
         const { bookingDetails } = location.state || {};
 
         if (!bookingDetails) {
+          console.error("No booking details received:", location.state);
           return <p>No booking details found.</p>;
         }
+        
+        console.log("Booking details:", bookingDetails);
+        
     return (
       <div className="confirmation-container">
         <div className='confirmation-container-title'>

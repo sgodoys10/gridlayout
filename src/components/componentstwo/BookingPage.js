@@ -47,6 +47,7 @@ const BookingPage = () => {
   try {
     // Directly call window.fetchAPI without async/await
     const times = window.fetchAPI(new Date(selectedDate));
+    console.log("Available times:", times);
     return times; // Return the times directly as an array
   } catch (error) {
     console.error('Error fetching available times:', error);
@@ -58,6 +59,7 @@ const BookingPage = () => {
 const updateAvailableTimes = (selectedDate) => {
   if (selectedDate) {
     const times = fetchAvailableTimes(selectedDate);
+    console.log("Updating available times:", times)
     dispatch({ type: 'SET_TIMES', payload: times });
   }
 };
@@ -89,6 +91,8 @@ useEffect(() => {
 
      // Save the updated list to local storage
      localStorage.setItem('bookings', JSON.stringify(updatedBookings));
+           // Log the formData before navigating to see what gets passed
+           console.log("Booking Details before navigating:", formData);
 
      // Navigate to confirmation page
      navigate('/confirmation', { state: { bookingDetails: formData } });

@@ -21,15 +21,16 @@ const BookingForm = ({formData, availableTimes, numberOfPeople, occasions, onFor
       <label htmlFor="time">Select a time:</label>
       <select id="time" name="time" value={formData.time} onChange={onFormChange}>
         <option value="" disabled>Select available time:</option>
+        {console.log("Available times in BookingForm:", availableTimes)}
               {availableTimes.map((time, index) => (
           <option key={index} value={time}>{time}</option>
               ))}
       </select>
     </div>
     <div>
-    <label htmlFor="occasion">Select an occassion:</label>
+    <label htmlFor="occasion">Select an occasion:</label>
       <select id="occasion" name="occasion" value={formData.occasion} onChange={onFormChange}>
-      <option value="" disabled>Select an occassion:</option>
+      <option value="" disabled>Select an occasion:</option>
               {occasions.map((occasion, index) => (
           <option key={index} value={occasion}>{occasion}</option>
               ))}
