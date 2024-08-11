@@ -104,15 +104,27 @@ useEffect(() => {
 
   const handleFormChange = (e) => {
     const { name, value } = e.target;
+    if (name === 'phone') {
+      const phoneNumberPattern = /^[0-9\b]+$/; 
+      if (value === '' || phoneNumberPattern.test(value)){
     setFormData(prevState => ({
       ...prevState,
       [name]: value
     }));
+  } else {
+    alert('Please enter only numbers.');
+  }
+} else {
+  setFormData(prevState => ({
+    ...prevState,
+    [name]: value
+  }));
+}
 
     if (name === 'date') {
       updateAvailableTimes(value); // Fetch and update available times when the date changes
     }
-  };
+};
 
   const handleFormSubmit = (e) => {
     e.preventDefault();

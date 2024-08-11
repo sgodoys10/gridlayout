@@ -6,7 +6,7 @@ const BookingForm = ({formData, availableTimes, numberOfPeople, occasions, onFor
     <form onSubmit={onFormSubmit}>
     <div>
       <label htmlFor="numberOfPeople">Number of people:</label>
-      <select id="numberOfPeople" name="numberOfPeople" value={formData.numberOfPeople} onChange={onFormChange}>
+      <select id="numberOfPeople" name="numberOfPeople" value={formData.numberOfPeople} onChange={onFormChange} required>
         <option value="" disabled>Select number of people:</option>
               {numberOfPeople.map((people, index) => (
           <option key={index} value={people}>{people}</option>
@@ -15,11 +15,11 @@ const BookingForm = ({formData, availableTimes, numberOfPeople, occasions, onFor
     </div>
     <div>
       <label htmlFor="date">Select a date:</label>
-      <input type="date" id="date" name="date" value={formData.date} onChange={onFormChange} />
+      <input type="date" id="date" name="date" value={formData.date} onChange={onFormChange} required />
     </div>
     <div>
       <label htmlFor="time">Select a time:</label>
-      <select id="time" name="time" value={formData.time} onChange={onFormChange}>
+      <select id="time" name="time" value={formData.time} onChange={onFormChange} required >
         <option value="" disabled>Select available time:</option>
         {console.log("Available times in BookingForm:", availableTimes)}
               {availableTimes.map((time, index) => (
@@ -38,14 +38,20 @@ const BookingForm = ({formData, availableTimes, numberOfPeople, occasions, onFor
     </div>
     <div>
       <label htmlFor="phone">Phone number:</label>
-      <input type="tel" id="phone" name="phone" value={formData.phone} onChange={onFormChange} />
+      <input 
+      type="tel" 
+      id="phone" 
+      name="phone" 
+      value={formData.phone} 
+      onChange={onFormChange} 
+      required/>
     </div>
     <div>
       <label htmlFor="preferences">Additional preferences:</label>
       <textarea id='preferences' name='preferences' className='large-input' value={formData.preferences} onChange={onFormChange}></textarea>
     </div>
     <div className="submit-container">
-    <button type="submit" className='submit'>Reserve</button>
+    <button type="submit" className='submit' >Reserve</button>
     </div>
     </form>
   );

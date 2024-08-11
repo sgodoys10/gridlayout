@@ -6,9 +6,9 @@ import lemondessert from "../assets/lemondessert.jpg"
 const Testimonials = () => {
   return (
     <div>
-      <div className='testimonials-title'> 
+      <header className='testimonials-title'> 
         <h1>Testimonials</h1>
-      </div>
+      </header>
       <div className='rating-card-container'>
       <div className='rating-card'>
         <h3>Rating: 5/5</h3>

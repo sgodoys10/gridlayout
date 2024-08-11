@@ -4,9 +4,9 @@ import Restaurantfood from "../assets/restauranfood.jpg";
 
 const Main = () => {
   return (
-    <div className='main'>
+    <main className='main'>
       <div className='content-wrapper'>
-        <div className='content-container'>
+        <section className='content-container'>
           <div className='main-title'>
             <h1>Little Lemon</h1>
             <h2>Chicago</h2>
@@ -17,14 +17,14 @@ const Main = () => {
             </p>
           </div>
           <div className='reserve-btn-container'>
-            <button className='btn'>Reserve a table</button>
+            <button className='btn' aria-label='Reserve a table'>Reserve a table</button>
           </div>
-        </div>
-        <div className='restaurant-food-pic'>
-          <img src={Restaurantfood} alt='Restaurant Food'/>
-        </div>
+        </section>
+        <figure className='restaurant-food-pic'>
+          <img src={Restaurantfood} alt='Delicious Mediterranean food served at Little Lemon restaurant'/>
+        </figure>
       </div>
-    </div>
+    </main>
   );
 }
 

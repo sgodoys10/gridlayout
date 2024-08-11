@@ -3,6 +3,8 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import BookingPage from '../componentstwo/BookingPage';
 import BookingForm from '../componentstwo/BookingForm';
+import '@testing-library/jest-dom';
+import userEvent from '@testing-library/user-event';
 
 // Mock data for the test
 const mockAvailableTimes = ['12:00', '13:00', '14:00'];
@@ -144,5 +146,42 @@ describe('BookingForm Component', () => {
       expect(screen.getByText(/571-345-8296/)).toBeInTheDocument();
       expect(screen.getByText(/14:00/)).toBeInTheDocument();
     });
+  });
+});
+
+
+// user validation unit tests
+
+describe('HTML validation for input fields', () => {
+  test('displays validation message when input is invalid', () => {
+    render(
+      <Router>
+        <BookingPage />
+      </Router>
+    );
+
+    const input = screen.getByLabelText(/Phone number/i); // Use regex to match case-insensitively
+    userEvent.type(input, 'not a number');
+    userEvent.tab(); // Trigger blur event
+
+    // Check that the input is invalid and has the correct validation message
+    expect(input).toBeInvalid();
+    expect(input.validationMessage).toBe('Please enter only numbers.');
+  });
+
+  test('does not display validation message when input is valid', () => {
+    render(
+      <Router>
+        <BookingPage />
+      </Router>
+    );
+
+    const input = screen.getByLabelText(/Phone number/i); // Use regex to match case-insensitively
+    userEvent.type(input, '5713458296');
+    userEvent.tab(); // Trigger blur event
+
+    // Check that the input is valid and no validation message is shown
+    expect(input).toBeValid();
+    expect(input.validationMessage).toBe('');
   });
 });
